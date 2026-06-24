@@ -1,0 +1,40 @@
+Both stacks and queues are ways to control the order in which items are added and removed.
+
+Stack → Last In First Out  (LIFO)
+Queue → First In First Out (FIFO)
+
+Stack — LIFO
+
+    Think of a stack of plates:
+
+                You add plates on top
+                You remove plates from top
+                The last plate added is the first one removed
+
+    Push 1 → [1]
+    Push 2 → [1, 2]
+    Push 3 → [1, 2, 3]
+    Pop    → [1, 2]     returns 3  (last in, first out)
+    Pop    → [1]        returns 2
+    Pop    → []         returns 1
+
+
+Stack in Python — Using a List
+To make a list behave like a stack, you must only use .append() to push items and .pop() to remove them. This enforces the Last-In, First-Out (LIFO) rule.
+
+    stack = []
+
+    # PUSH — add to top
+    stack.append(1)    # [1]
+    stack.append(2)    # [1, 2]
+    stack.append(3)    # [1, 2, 3]
+
+    # POP — remove from top
+    stack.pop()        # returns 3 → [1, 2]
+    stack.pop()        # returns 2 → [1]
+
+    # PEEK — see top without removing
+    stack[-1]          # returns 1 → stack unchanged
+
+    # CHECK EMPTY
+    len(stack) == 0    # False

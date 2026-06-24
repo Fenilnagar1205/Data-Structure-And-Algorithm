@@ -1,0 +1,15 @@
+Queue — FIFO
+Think of a queue at a shop:
+
+You join at the back
+You leave from the front
+First person in = first person served
+
+Enqueue A → [A]
+Enqueue B → [A, B]
+Enqueue C → [A, B, C]
+Dequeue   → [B, C]      returns A  (first in, first out)
+Dequeue   → [C]         returns B
+
+Queue in Python — Using collections.deque
+A regular list is slow for queues (pop(0) is O(n)). Use deque instead — O(1) on both ends:

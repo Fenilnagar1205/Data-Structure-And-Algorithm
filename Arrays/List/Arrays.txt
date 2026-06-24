@@ -1,0 +1,95 @@
+In Python, you use a List to act as an array.
+A list stores multiple values in one variable, in a specific order.
+
+numbers = [10, 20, 30, 40, 50]
+#           0    1   2   3   4   ← index (position)
+#          -5   -4  -3  -2  -1  ← negative index
+
+# 1. Initialization
+arr = [10, 20, 30, 40, 50]
+
+# 2. Accessing (Fast!)
+print(arr[2])  # Output: 30 | Time: O(1)
+
+# 3. Updating (Fast!)
+arr[1] = 25    # arr is now [10, 25, 30, 40, 50] | Time: O(1)
+
+# 4. Inserting at the end (Fast!)
+arr.append(60) # [10, 25, 30, 40, 50, 60] | Time: O(1)
+
+# 5. Inserting/Deleting at the beginning or middle (Slow!)
+arr.insert(0, 5) # [5, 10, 25, 30, 40, 50, 60] | Time: O(N)
+# Why slow? Because every single element after index 0 has to shift one step to the right.
+
+##Slicing — Get a Portion of a List
+numbers = [10, 20, 30, 40, 50]
+
+numbers[1:4]    # [20, 30, 40]  → index 1 to 3 (4 excluded)
+numbers[:3]     # [10, 20, 30]  → start to index 2
+numbers[2:]     # [30, 40, 50]  → index 2 to end
+numbers[:]      # [10, 20, 30, 40, 50] → entire list
+numbers[::2]    # [10, 30, 50]  → every 2nd element
+numbers[::-1]   # [50, 40, 30, 20, 10] → reversed!
+
+
+##Most Important List Methods
+
+numbers = [10, 20, 30]
+
+# ADDING
+numbers.append(40)        # [10,20,30,40]     → add to end
+numbers.insert(1, 15)     # [10,15,20,30,40]  → add at index 1
+
+# REMOVING
+numbers.pop()             # removes last element → returns 40
+numbers.pop(0)            # removes element at index 0 → returns 10
+numbers.remove(20)        # removes first occurrence of value 20
+
+# INFORMATION
+len(numbers)              # number of elements
+numbers.count(20)         # how many times 20 appears
+numbers.index(30)         # index of value 30
+
+# ORDERING
+numbers.sort()            # sorts in place → ascending
+numbers.sort(reverse=True)# sorts in place → descending
+numbers.reverse()         # reverses in place
+
+# COPYING
+copy = numbers.copy()     # makes a separate copy
+
+
+## A Critical Trap — Copy vs Reference
+    a = [1, 2, 3]
+    b  = a            # ❌ b is NOT a copy — both point to same list
+    b.append(4)
+    print(a)         # [1, 2, 3, 4] ← a changed too! 😱
+
+
+    a = [1, 2, 3]
+    b = a.copy()     # ✅ b is a real separate copy         
+    b.append(4)
+    print(a)         # [1, 2, 3] ← a unchanged ✅
+    print(b)         # [1, 2, 3, 4]
+
+    #Why Does This Happen?
+
+    a = [1,2,3]  →  a points to a box in memory containing [1,2,3]
+    b = a        →  b points to THE SAME box
+    b = a.copy() →  b points to a NEW box with same values
+
+# Iterating Over a List — 3 Ways
+
+    fruits = ["apple", "banana", "mango"]
+
+    # Way 1 — direct (when you only need value)
+    for fruit in fruits:
+        print(fruit)
+
+    # Way 2 — range (when you need index)
+    for i in range(len(fruits)):
+        print(i, fruits[i])
+
+    # Way 3 — enumerate (when you need both)
+    for i, fruit in enumerate(fruits):
+        print(i, fruit)
